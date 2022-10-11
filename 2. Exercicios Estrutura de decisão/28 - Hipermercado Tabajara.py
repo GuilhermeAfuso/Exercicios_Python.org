@@ -15,7 +15,7 @@
 
 # Passo 1: Listar todos os produtos e tabelas de preços de cada produto.
 
-carnes = ['file duplo', 'alcatra', 'picanha']
+carnes = ['flie duplo', 'alcatra', 'picanha']
 
 ate5 = ['4.9', '5.9', '6.9']
 
@@ -59,16 +59,18 @@ while not validapeso_carne:
 # 5.1: Identificar a carne informada pelo cliente na tabela de carnes.
 
 for i, carne in enumerate(carnes):
-    total = peso_carne * float(acima5[i])
-    if carne_cliente == carne:
+
+    if carnes[i] == carne_cliente:
         if clientefidelidade == 'S':
             if peso_carne > 5:
+                total = peso_carne * float(acima5[i])
                 desc = total * 0.05
                 print(f'A carne {carne} está R$ {float(acima5[i]):_.2f} por Kilo.'.replace('.', ',').replace('_', '.'))
                 print(f'Peso total: {peso_carne:_.2f} Kg'.replace('.', ',').replace('_', '.'))
                 print(f'Desconto: R$ {desc:_.2f}'.replace('.', ',').replace('_', '.'))
                 print(f'Total a pagar: R$ {total - desc:_.2f}'.replace('.', ',').replace('_', '.'))
             else:
+                total = peso_carne * float(ate5[i])
                 desc = peso_carne * float(ate5[i]) * 0.05
                 print(f'A carne {carne} está R$ {ate5[i]:_.2f} por Kilo.'.replace('.', ',').replace('_', '.'))
                 print(f'Peso total: {peso_carne:_.2f} Kg'.replace('.', ',').replace('_', '.'))
@@ -76,11 +78,15 @@ for i, carne in enumerate(carnes):
                 print(f'Total a pagar: R$ {total - desc:_.2f}'.replace('.', ',').replace('_', '.'))
         else:
             if peso_carne > 5:
+                total = peso_carne * float(acima5[i])
                 print(f'A carne {carne} está R$ {acima5[i]:_.2f} por Kilo.'.replace('.', ',').replace('_', '.'))
                 print(f'Peso total: {peso_carne:_.2f} Kg'.replace('.', ',').replace('_', '.'))
                 print(f'Total a pagar: R$ {total:_.2f}'.replace('.', ',').replace('_', '.'))
             else:
+                total = peso_carne * float(ate5[i])
                 print(f'A carne {carne} está R$ {ate5[i]:_.2f} por Kilo.'.replace('.', ',').replace('_', '.'))
                 print(f'Peso total: {peso_carne:_.2f} Kg'.replace('.', ',').replace('_', '.'))
                 print(f'Total a pagar: R$ {total:_.2f}'.replace('.', ',').replace('_', '.'))
 
+    else:
+        print('Erro.')
